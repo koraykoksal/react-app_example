@@ -10,6 +10,8 @@ import NotFound from "../pages/NotFound";
 import Footer from "../components/Footer";
 import { FullStack } from "../pages/FullStack";
 import { Aws } from "../pages/Aws";
+import { PrivateRouter } from "./PrivateRouter";
+import { Login } from "../pages/Login";
 
 export const AppRouter = () => {
   return (
@@ -17,15 +19,23 @@ export const AppRouter = () => {
     <Nav />
     <Routes>
       <Route path="/" element={<Home />} />
+
       <Route path="/paths" element={<Paths />}>
         <Route index element={<FullStack/>}/>
         <Route path="aws" element={<Aws/>}/>
       </Route>
       <Route path="/people" element={<People />} />
       <Route path="/people/:id" element={<PersonDetail />} />
+
+      <Route element={<PrivateRouter/>}>
       <Route path="/contact" element={<Contact />} />
+      </Route>
+      
       <Route path="*" element={<NotFound />} />
+
+      <Route path="/login" element={<Login/>}/>
     </Routes>
+    
     <Footer />
   </>
   )
