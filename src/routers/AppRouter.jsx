@@ -12,8 +12,12 @@ import { FullStack } from "../pages/FullStack";
 import { Aws } from "../pages/Aws";
 import { PrivateRouter } from "./PrivateRouter";
 import { Login } from "../pages/Login";
+import { useState } from "react";
 
 export const AppRouter = () => {
+
+  const [user, setuser] = useState(false)
+  
   return (
     <>
     <Nav />
@@ -27,13 +31,13 @@ export const AppRouter = () => {
       <Route path="/people" element={<People />} />
       <Route path="/people/:id" element={<PersonDetail />} />
 
-      <Route element={<PrivateRouter/>}>
+      <Route element={<PrivateRouter user={user}/>}>
       <Route path="/contact" element={<Contact />} />
       </Route>
       
       <Route path="*" element={<NotFound />} />
 
-      <Route path="/login" element={<Login/>}/>
+      <Route path="/login" element={<Login setuser={setuser}/>}/>
     </Routes>
     
     <Footer />
