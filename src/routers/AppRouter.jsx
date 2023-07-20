@@ -18,7 +18,7 @@ export const AppRouter = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/paths" element={<Paths />}>
-        <Route path="fullstack" element={<FullStack/>}/>
+        <Route index element={<FullStack/>}/>
         <Route path="aws" element={<Aws/>}/>
       </Route>
       <Route path="/people" element={<People />} />
